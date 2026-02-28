@@ -1,21 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Letters I Never Sent</title>
 <style>
 body {
   background-color: #ffffff;
-  font-family: Arial, sans-serif;
   color: #222222;
-  margin: 0;
-  padding: 40px;
+  font-family: Arial, sans-serif;
+  margin: 40px;
   line-height: 1.6;
-}
-
-.container {
-  max-width: 600px;
-  margin: auto;
 }
 
 h1 {
@@ -27,54 +22,81 @@ h1 {
 .subtitle {
   font-size: 14px;
   color: #777;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
-.letter-title {
-  font-size: 16px;
-  margin-top: 40px;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.date {
-  font-size: 12px;
-  color: #999;
-  margin-bottom: 20px;
-}
-
-hr {
+.accordion {
+  background-color: #f9f9f9;
+  cursor: pointer;
+  padding: 15px 20px;
+  width: 100%;
   border: none;
-  border-top: 1px solid #eee;
-  margin: 40px 0;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+  margin-bottom: 5px;
+}
+
+.accordion:hover {
+  background-color: #eee;
+}
+
+.panel {
+  padding: 0 20px;
+  display: none;
+  background-color: #fefefe;
+  overflow: hidden;
+  border-left: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
 }
 </style>
 </head>
-
 <body>
+
 <div class="container">
-
 <h1>Letters I Never Sent</h1>
-<div class="subtitle">A quiet space for words I couldn’t say out loud.</div>
+<div class="subtitle">Click a title to read the letter.</div>
 
-<div class="letter-title">Day 1 — Missing You</div>
-<div class="date">March __, 2026</div>
+<!-- Letter 1 -->
+<button class="accordion">Day 1 — Missing You</button>
+<div class="panel">
+  <p>
+  Hi.<br><br>
+  Today was harder than I expected.<br>
+  I almost messaged you.<br>
+  Not to disturb your peace — but because you still feel like home.<br><br>
+  I’m learning how to sit with the silence. It’s not easy.<br><br>
+  But I’m trying.
+  </p>
+</div>
 
-<p>
-Hi.<br><br>
+<!-- Letter 2 -->
+<button class="accordion">Day 2 — Fear</button>
+<div class="panel">
+  <p>
+  Today I felt lost again.<br>
+  Missing you hits differently when there’s silence.<br>
+  But I remind myself — your peace matters more than my panic.<br><br>
+  I will survive this wave.
+  </p>
+</div>
 
-Today was harder than I expected.<br>
-I almost messaged you.<br>
-Not to disturb your peace —<br>
-but because you still feel like home.<br><br>
-
-I’m learning how to sit with the silence.<br>
-It’s not easy.<br><br>
-
-But I’m trying.
-</p>
-
-<hr>
+<script>
+var acc = document.getElementsByClassName("accordion");
+for (var i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
 
 </div>
 </body>
