@@ -58,6 +58,17 @@ h1 {
 </head>
 <body>
 
+<script>
+// SIMPLE PASSWORD PROTECTION
+var password = "060122"; // change password here
+var userPass = prompt("Enter password to view letters:");
+
+if (userPass !== password) {
+    document.body.innerHTML = "<h2 style='color:white; text-align:center; margin-top:100px;'>Access Denied</h2>";
+    throw "Access Denied";
+}
+</script>
+
 <div class="container">
 <h1>Letters I Never Sent</h1>
 <div class="subtitle">Click a title to read the letter.</div>
@@ -81,7 +92,7 @@ h1 {
 </div>
 
 <!-- Letter 2 -->
-<button class="accordion">February 28— Fear</button>
+<button class="accordion">February 28 — Fear</button>
 <div class="panel">
   <p>
   Hi, <br><br>
@@ -108,14 +119,15 @@ h1 {
 </div>
 
 <script>
+// ONE LETTER OPEN AT A TIME ACCORDION
 var acc = document.getElementsByClassName("accordion");
 
 for (var i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
 
-    // Loop through all panels and close the others
+    // Close all other panels
     for (var j = 0; j < acc.length; j++) {
-      if (acc[j] !== this) { // lahat maliban sa current
+      if (acc[j] !== this) {
         acc[j].classList.remove("active");
         acc[j].nextElementSibling.style.display = "none";
       }
