@@ -58,17 +58,8 @@ h1 {
 </head>
 <body>
 
-<script>
-// SIMPLE PASSWORD PROTECTION
-var password = "060122"; // change password here
-var userPass = prompt("Enter password to view letters:");
-
-if (userPass !== password) {
-    document.body.innerHTML = "<h2 style='color:white; text-align:center; margin-top:100px;'>Access Denied</h2>";
-    throw "Access Denied";
-}
-</script>
-
+<!-- Letters container hidden by default -->
+<div id="letters-container" style="display:none;">
 <div class="container">
 <h1>Letters I Never Sent</h1>
 <div class="subtitle">Click a title to read the letter.</div>
@@ -118,6 +109,7 @@ if (userPass !== password) {
   </p>
 </div>
 
+<!-- Letter 3 -->
 <button class="accordion">March 1 - The Moment of Truth</button>
 <div class="panel">
   <p>
@@ -147,25 +139,30 @@ if (userPass !== password) {
     Ps. Balik ka na.<br>
   </p>
 </div>
-<button class="accordion">March 2- Acceptance</button>
+
+<!-- Letter 4 -->
+<button class="accordion">March 2 — Acceptance</button>
 <div class="panel">
   <p>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
   </p>
 </div>
+
+</div>
+</div>
+
 <script>
-// ONE LETTER OPEN AT A TIME ACCORDION
+// 🔐 PASSWORD LOGIC
+var password = "060122"; // change password here
+var userPass = prompt("Enter password to view letters:");
+
+if(userPass === password){
+    document.getElementById("letters-container").style.display = "block";
+} else {
+    document.body.innerHTML = "<h2 style='color:white; text-align:center; margin-top:100px;'>Access Denied</h2>";
+}
+
+// 🔀 ACCORDION FUNCTIONALITY
 var acc = document.getElementsByClassName("accordion");
 
 for (var i = 0; i < acc.length; i++) {
@@ -191,6 +188,5 @@ for (var i = 0; i < acc.length; i++) {
 }
 </script>
 
-</div>
 </body>
 </html>
