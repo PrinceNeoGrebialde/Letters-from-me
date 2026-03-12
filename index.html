@@ -4,69 +4,162 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Letters I Never Sent</title>
+
 <style>
-body {
-  background-color: #ffc0cb; /* pink background */
-  color: #000000; /* black text */
-  font-family: "Times New Roman", sans-serif;
-  margin: 40px;
-  line-height: 1.6;
+
+body{
+background: linear-gradient(135deg,#ffd6e7,#ffb6d5);
+color:black;
+font-family:"Times New Roman",serif;
+margin:40px;
+line-height:1.6;
+transition:0.3s;
 }
 
-h1 {
-  font-weight: normal;
-  font-size: 28px;
-  margin-bottom: 5px;
-  color: #000000;
+/* NIGHT MODE */
+
+.dark-mode{
+background:#111;
+color:white;
 }
 
-.subtitle {
-  font-size: 14px;
-  color: #333333;
-  margin-bottom: 30px;
+.dark-mode .panel{
+background:#222;
+color:white;
 }
 
-.accordion {
-  background-color: #ff9eb5; /* darker pink */
-  color: #000000;
-  cursor: pointer;
-  padding: 15px 20px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 16px;
-  transition: background-color 0.2s ease;
-  margin-bottom: 5px;
+.dark-mode .accordion{
+background:#333;
+color:white;
 }
 
-.accordion:hover {
-  background-color: #ff7fa0; /* hover pink */
+/* BUTTON */
+
+.mode-btn{
+margin-bottom:20px;
+padding:8px 14px;
+border:none;
+background:#ff6f9c;
+color:white;
+border-radius:6px;
+cursor:pointer;
 }
 
-.panel {
-  padding: 0 20px;
-  display: none;
-  background-color: #ffd6e0; /* light pink */
-  color: #000000;
-  overflow: hidden;
-  border-left: 2px solid #ff7fa0;
-  border-right: 2px solid #ff7fa0;
-  border-bottom: 2px solid #ff7fa0;
+/* HEADERS */
+
+h1{
+font-weight:normal;
+font-size:28px;
+margin-bottom:5px;
 }
+
+.subtitle{
+font-size:14px;
+color:#333;
+margin-bottom:30px;
+}
+
+/* ACCORDION */
+
+.accordion{
+background:#ff9eb5;
+color:black;
+cursor:pointer;
+padding:15px 20px;
+width:100%;
+border:none;
+text-align:left;
+font-size:16px;
+margin-bottom:5px;
+border-radius:6px;
+}
+
+.accordion:hover{
+background:#ff7fa0;
+}
+
+.panel{
+padding:20px;
+display:none;
+background:#ffd6e0;
+border-left:2px solid #ff7fa0;
+border-right:2px solid #ff7fa0;
+border-bottom:2px solid #ff7fa0;
+border-radius:0 0 6px 6px;
+}
+
+/* ENVELOPE */
+
+.envelope{
+width:200px;
+height:120px;
+background:#ff6f9c;
+margin:15px auto;
+position:relative;
+cursor:pointer;
+border-radius:4px;
+}
+
+.envelope:before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+border-left:100px solid transparent;
+border-right:100px solid transparent;
+border-top:60px solid #ff4d88;
+transition:transform .5s;
+transform-origin:top;
+}
+
+.envelope.open:before{
+transform:rotateX(180deg);
+}
+
+.letter{
+display:none;
+margin-top:10px;
+}
+
+.letter.show{
+display:block;
+}
+
+/* FLOATING HEARTS */
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:18px;
+color:#ff4d88;
+animation:floatUp 10s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:0;}
+30%{opacity:1;}
+100%{transform:translateY(-120vh);opacity:0;}
+}
+
 </style>
 </head>
+
 <body>
+
+<button class="mode-btn" onclick="toggleMode()">🌙 Night Mode</button>
 
 <!-- Letters container hidden by default -->
 <div id="letters-container" style="display:none;">
-<div class="container">
+
 <h1>Letters I Never Sent</h1>
 <div class="subtitle">Click a title to read the letter.</div>
 
 <!-- Letter 1 -->
 <button class="accordion">February 27 — Missing You</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p>
   Hi,<br><br>
   Ilang beses kong natagpuan ang sarili ko sa convo natin.<br>
@@ -85,6 +178,9 @@ h1 {
 <!-- Letter 2 -->
 <button class="accordion">February 28 — Fear</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p>
   Hi, <br><br>
   Masaya ako na nagchat ka.<br>
@@ -112,6 +208,9 @@ h1 {
 <!-- Letter 3 -->
 <button class="accordion">March 1 - The Moment of Truth</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p>
     Hi, <br><br>
     So wala na talaga.<br>
@@ -143,6 +242,9 @@ h1 {
 <!-- Letter 4 -->
 <button class="accordion">March 2 — Acceptance</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p>
     Alam mo ba,<br>
     Nag umpisa na ako mag exercise.<br>
@@ -172,6 +274,9 @@ h1 {
 
 <button class="accordion">March 3 - The Confusion</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p>
     Hindi ko ineexpect na makakausap ka ulit ngayon.<br>
     Nakakamiss ka pa rin talaga kausap.<br>
@@ -190,6 +295,9 @@ h1 {
 
 <button class="accordion">March 4 - Progress</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p>
     Dumating na order ko today na book.<br>
     Nag umpisa na rin ako magbasa.<br>
@@ -210,6 +318,9 @@ h1 {
 </div>
    <button class="accordion">March 5 - Missing You</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p> 
     Nakakapagtaka na talaga yung pag uusap natin.<br>
     Di ko alam kung ano ba to.<br>
@@ -229,6 +340,9 @@ h1 {
 
      <button class="accordion">March 6 - Excitement</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p> 
     Akala ko di ka uuwi.<br>
     Excited pa naman ako makita ka.<br>
@@ -248,6 +362,9 @@ h1 {
 
      <button class="accordion">March 7 - Joy</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p> 
     Masaya ako kasi nakasama ulit kita.<br>
     Pero nalulungkot pa rin kasi namimiss ko talaga yung tayo.<br>
@@ -265,6 +382,9 @@ h1 {
 
      <button class="accordion">March 8 - Hope</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p> 
     Alam mo ba, akala ko di na tayo magsisimbang magkasama.<br>
     Akala ko solo na lang tayo kung magsimba.<br>
@@ -285,6 +405,9 @@ h1 {
 
      <button class="accordion">March 9 - Heartache</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p> 
     Ito na yung sinasabi ko eh.<br>
     Di ko pa rin talaga kaya na wala ka.<br>
@@ -306,6 +429,9 @@ h1 {
 
      <button class="accordion">March 10 - Goodluck</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p> 
     Goodluck sa exam mo ngayon.<br>
     Sana makapasa ka.<br>
@@ -319,6 +445,9 @@ h1 {
 
      <button class="accordion">March 11 - Realization</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p> 
     May realization lang ako habang wala ka dito.<br>
     Alam ko na nagiging problema kapag lumalabas ka.<br>
@@ -335,6 +464,9 @@ h1 {
 
      <button class="accordion">March 12 - Joy to Sadness</button>
 <div class="panel">
+  <div class="envelope" onclick="openLetter(this)"></div>
+
+<div class="letter">
   <p> 
     Ito na naman yung lungkot kapag di ka kasama.<br>
     Alam mo ba?<br>
@@ -364,6 +496,15 @@ h1 {
 </div>
 </div>
 </div>
+
+  <div class="heart" style="left:10%">♥</div>
+<div class="heart" style="left:25%;animation-delay:2s;">♥</div>
+<div class="heart" style="left:40%;animation-delay:4s;">♥</div>
+<div class="heart" style="left:60%;animation-delay:1s;">♥</div>
+<div class="heart" style="left:75%;animation-delay:3s;">♥</div>
+<div class="heart" style="left:90%;animation-delay:5s;">♥</div>
+
+  
 
 <script>
 // 🔐 PASSWORD LOGIC
@@ -448,6 +589,24 @@ function addLetter(title, content) {
         }
     });
 }
+
+  
+function openLetter(env){
+
+env.classList.toggle("open");
+
+var letter=env.nextElementSibling;
+
+letter.classList.toggle("show");
+
+}
+
+/* NIGHT MODE */
+
+function toggleMode(){
+document.body.classList.toggle("dark-mode");
+}
+
 </script>
 
 </body>
